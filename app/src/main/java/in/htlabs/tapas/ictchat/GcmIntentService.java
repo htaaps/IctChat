@@ -52,15 +52,9 @@ public class GcmIntentService extends IntentService {
             } else if (GoogleCloudMessaging.
                     MESSAGE_TYPE_MESSAGE.equals(messageType)) {
                 // This loop represents the service doing some work.
-                for (int i=0; i<5; i++) {
-                    Log.i(TAG, "Working... " + (i+1)
-                            + "/5 @ " + SystemClock.elapsedRealtime());
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                    }
-                }
-                Log.i(TAG, "Completed work @ " + SystemClock.elapsedRealtime());
+                Intent chatIntent = new Intent("in.htlabs.tapas.ictchat.chatmessage");
+                chatIntent.putExtra("CHATMESSAGE", extras.get("Notice").toString());
+                sendBroadcast(chatIntent);
                 // Post notification of received message.
                 sendNotification(extras.getString("Notice"));
                 Log.i(TAG, "Received: " + extras.toString());
@@ -76,12 +70,9 @@ public class GcmIntentService extends IntentService {
     private void sendNotification(String msg) {
         mNotificationManager = (NotificationManager)this.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0,new Intent(this, MainActivity.class), 0);
-
-        Bundle args = new Bundle();
-        args.putString("msg", msg);
-        Intent chat = new Intent(this, ChatActivity.class);
-        chat.putExtra("INFO", args);
+        Intent intent =new Intent(this, ChatBubbleActivity.class);
+        intent.putExtra("msg",msg);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0,intent, 0);
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)

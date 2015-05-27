@@ -68,7 +68,7 @@ public class ListViewAdapter extends BaseAdapter {
             public void onClick(View arg0) {
                 // Get the position
                 user = userList.get(position);
-                Intent intent = new Intent(context, Message.class);
+                Intent intent = new Intent(context, ChatBubbleActivity.class);
                 // Pass all data rank
                 intent.putExtra("username", user.getUserName());
                 // Pass all data country
