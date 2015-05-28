@@ -27,7 +27,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatBubbleActivity extends Activity {
+public class ChatBubbleActivity extends Activity implements View.OnClickListener{
     private static final String TAG = "ChatBubbleActivity";
 
     private ChatArrayAdapter chatArrayAdapter;
@@ -42,35 +42,21 @@ public class ChatBubbleActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent i = getIntent();
         setContentView(R.layout.activity_chat);
 
+        Intent i = getIntent();
         username = i.getStringExtra("username");
 
         buttonSend = (Button) findViewById(R.id.buttonSend);
-
         listView = (ListView) findViewById(R.id.listView1);
+        chatText = (EditText) findViewById(R.id.chatText);
 
         chatArrayAdapter = new ChatArrayAdapter(getApplicationContext(), R.layout.activity_chat_singlemessage);
         listView.setAdapter(chatArrayAdapter);
 
-        chatText = (EditText) findViewById(R.id.chatText);
 
         registerReceiver(broadcastReceiver, new IntentFilter("in.htlabs.tapas.ictchat.chatmessage"));
-//        chatText.setOnKeyListener(new OnKeyListener() {
-//            public boolean onKey(View v, int keyCode, KeyEvent event) {
-//                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-//                    return sendChatMessage();
-//                }
-//                return false;
-//            }
-//        });
-        buttonSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                sendChatMessage();
-            }
-        });
+        buttonSend.setOnClickListener(this);
 
         listView.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
         listView.setAdapter(chatArrayAdapter);
@@ -85,24 +71,27 @@ public class ChatBubbleActivity extends Activity {
         });
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.buttonSend:
+                chatArrayAdapter.add(new ChatMessage(side, chatText.getText().toString()));
+                message=chatText.getText().toString();
+                chatText.setText("");
+                side = !side;
+                new SendMessage().execute();
+            break;
+        }
+    }
+
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             Log.d(TAG, "onReceive: " + intent.getStringExtra("CHATMESSAGE"));
             chatArrayAdapter.add(new ChatMessage(side, intent.getStringExtra("CHATMESSAGE")));
             side = !side;
-
         }
     };
-
-    private boolean sendChatMessage(){
-        chatArrayAdapter.add(new ChatMessage(side, chatText.getText().toString()));
-        message=chatText.getText().toString();
-        chatText.setText("");
-        side = !side;
-        new SendMessage().execute();
-        return true;
-    }
 
     class SendMessage extends AsyncTask<String, String, String> {
 
