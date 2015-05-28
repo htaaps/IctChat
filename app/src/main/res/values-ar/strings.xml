@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string name="welcome">تصفية حسب</string>
+    <string name="email">2011 فرق</string>
+    <string name="password">بحث :</string>
+    <string name="login">تصفية حسب</string>
+    <string name="signup">تصفية حسب</string>
+
+
+    <string name="hello_world">تصفية حسب</string>
+    <string name="app_name">2011 فرق</string>
+    <string name="search">بحث :</string>
+</resources>
