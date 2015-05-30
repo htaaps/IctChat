@@ -5,6 +5,7 @@ package in.htlabs.tapas.ictchat;
  */
 
 import android.app.IntentService;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -70,18 +71,18 @@ public class GcmIntentService extends IntentService {
     private void sendNotification(String msg) {
         mNotificationManager = (NotificationManager)this.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        Intent intent =new Intent(this, ChatBubbleActivity.class);
+        Intent intent =new Intent(this, MainActivity.class);
         intent.putExtra("msg",msg);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,intent, 0);
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
-                        // .setSmallIcon(R.drawable.ic_stat_gcm)
                         .setContentTitle("IctChat")
                         .setSmallIcon(R.drawable.ic_launcher)
                         .setStyle(new NotificationCompat.BigTextStyle()
                                 .bigText(msg))
-                        .setContentText(msg);
+                        .setContentText(msg)
+                        .setAutoCancel(true);
 
         mBuilder.setContentIntent(contentIntent);
         mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());

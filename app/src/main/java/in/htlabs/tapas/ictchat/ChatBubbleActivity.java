@@ -165,12 +165,18 @@ public class ChatBubbleActivity extends Activity implements View.OnClickListener
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(broadcastReceiver);
+        if(broadcastReceiver != null){
+            unregisterReceiver(broadcastReceiver);
+            broadcastReceiver=null;
+        }
     }
 
     @Override
     protected void onStop(){
         super.onStop();
-        unregisterReceiver(broadcastReceiver);
+        if(broadcastReceiver != null){
+            unregisterReceiver(broadcastReceiver);
+            broadcastReceiver=null;
+        }
     }
 }
