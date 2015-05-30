@@ -169,6 +169,7 @@ public class ChatBubbleActivity extends Activity implements View.OnClickListener
             unregisterReceiver(broadcastReceiver);
             broadcastReceiver=null;
         }
+        finish();
     }
 
     @Override
@@ -178,5 +179,6 @@ public class ChatBubbleActivity extends Activity implements View.OnClickListener
             unregisterReceiver(broadcastReceiver);
             broadcastReceiver=null;
         }
+        finish();
     }
 }
