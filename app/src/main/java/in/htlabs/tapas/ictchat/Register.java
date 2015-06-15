@@ -159,7 +159,7 @@ public class Register extends Activity implements  View.OnClickListener, View.On
         }
 
         //mobile no should be of 10 digits
-        if(mobile.length()>10 || mobile.length()<10){
+        if(mobile.length()>8 || mobile.length()<8){
             re_et_mobile.setText("");
             re_et_mobile.requestFocus();
             Toast.makeText(getApplicationContext(), "please enter mobile number of 10 digits", Toast.LENGTH_SHORT).show();
@@ -272,7 +272,7 @@ public class Register extends Activity implements  View.OnClickListener, View.On
 
         //testing from a real server:
         //private static final String REGISTER_URL = "http://www.yourdomain.com/webservice/login.php";
-        private static final String REGISTER_URL = "http://www.htlabs.in/tapas/wealthcreator/register.php";
+        private static final String REGISTER_URL = "http://www.htlabs.in/student/ictchat/register.php";
 
         // JSON IDS:
         private static final String TAG_SUCCESS = "success";

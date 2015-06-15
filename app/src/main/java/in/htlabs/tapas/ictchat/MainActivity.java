@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
         JSONParser jsonParser = new JSONParser();
 
         //testing from a real server:
-        private static final String GETUSER_URL = "http://www.htlabs.in/tapas/wealthcreator/getuser.php";
+        private static final String GETUSER_URL = "http://www.htlabs.in/student/ictchat/getuser.php";
 
         // JSON IDS:
         private static final String TAG_SUCCESS = "success";

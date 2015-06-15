@@ -71,7 +71,7 @@ public class Login extends Activity implements View.OnClickListener {
         JSONParser jsonParser = new JSONParser();
 
         //testing from a real server:
-        private static final String LOGIN_URL = "http://www.htlabs.in/tapas/wealthcreator/login.php";
+        private static final String LOGIN_URL = "http://www.htlabs.in/student/ictchat/login.php";
 
         // JSON IDS:
         private static final String TAG_SUCCESS = "success";

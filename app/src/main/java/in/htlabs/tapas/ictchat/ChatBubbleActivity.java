@@ -102,7 +102,7 @@ public class ChatBubbleActivity extends Activity implements View.OnClickListener
         JSONParser jsonParser = new JSONParser();
 
         //testing from a real server:
-        private static final String SEND_MSG_URL = "http://www.htlabs.in/tapas/wealthcreator/sendmessage.php";
+        private static final String SEND_MSG_URL = "http://www.htlabs.in/student/ictchat/sendmessage.php";
 
         // JSON IDS:
         private static final String TAG_SUCCESS = "success";

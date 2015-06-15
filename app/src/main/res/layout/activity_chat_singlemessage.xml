@@ -12,7 +12,7 @@
             android:id="@+id/lv_iv_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@drawable/chat_image"/>
         <TextView
             android:id="@+id/singleMessage"
             android:layout_width="wrap_content"
