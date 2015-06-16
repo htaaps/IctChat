@@ -2,11 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/bg_log_bg"
+    android:background="@drawable/back"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp" >
-
+    <ImageView
+        android:id="@+id/lv_iv_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/a"
+        android:padding="40dp"/>
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -15,6 +20,7 @@
         android:background="@color/bg_reg_lbg"
         android:paddingLeft="20dp"
         android:paddingRight="20dp" >
+
 
         <EditText
             android:id="@+id/lo_et_user"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="bg_login">#26ae90</color>
+    <color name="bg_login">#47c7ef</color>
     <color name="bg_register">#ff07b017</color>
     <color name="bg_main">#428bca</color>
     <color name="white">#ffffff</color>
